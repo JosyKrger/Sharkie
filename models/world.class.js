@@ -114,9 +114,10 @@ class World {
     checkCollision() {
         setInterval( () => {
             this.level.pufferfish.forEach( (pufferfish) => {
-                if (this.character.isColliding(pufferfish)) {
-                    console.log("Character hit the pufferfish", pufferfish);
-                }
+                this.character.isColliding(pufferfish);
+                //if (this.character.isColliding(pufferfish)) {
+                //    console.log("Character hit the pufferfish", pufferfish);
+                //}
             });
         }, 200);
     }

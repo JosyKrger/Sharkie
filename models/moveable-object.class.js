@@ -121,34 +121,12 @@ class MoveableObject {
 
 
     isColliding(obj) {
-        // Berechnung der Parameter der ersten Ellipse
-        let oX1 = this.x + (this.width + this.offsetWidth) / 2 + this.offsetX; 
-        let oY1 = this.y + (this.height + this.offsetHeight) / 2 + this.offsetY;
-        let oWidth1 = (this.width + this.offsetWidth) / 2;
-        let oHeight1 = (this.height + this.offsetHeight) / 2;
-    
-        // Berechnung der Parameter der zweiten Ellipse
-        let oX2 = obj.x + (obj.width + obj.offsetWidth) / 2 + obj.offsetX; 
-        let oY2 = obj.y + (obj.height + obj.offsetHeight) / 2 + obj.offsetY;
-        let oWidth2 = (obj.width + obj.offsetWidth) / 2;
-        let oHeight2 = (obj.height + obj.offsetHeight) / 2;
-    
-        // Berechnung des Abstands zwischen den Mittelpunkten der beiden Ellipsen
-        let dx = oX1 - oX2;
-        let dy = oY1 - oY2;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-    
-        // Berechnung der Radien der Ellipsen entlang der Kollisionsrichtung
-        let angle = Math.atan2(dy, dx);
-        let r1 = (oWidth1 * oHeight1) / 
-                 Math.sqrt(oHeight1 * oHeight1 * Math.cos(angle) * Math.cos(angle) + 
-                           oWidth1 * oWidth1 * Math.sin(angle) * Math.sin(angle));
-        let r2 = (oWidth2 * oHeight2) / 
-                 Math.sqrt(oHeight2 * oHeight2 * Math.cos(angle) * Math.cos(angle) + 
-                           oWidth2 * oWidth2 * Math.sin(angle) * Math.sin(angle));
-    
-        // Überprüfung, ob die Ellipsen kollidieren
-        return distance <= (r1 + r2);
+       let character = (this.x + this.offsetX, this.y + this.offsetY, this.width + this.offsetWidth / 2, this.height + this.offsetHeight / 2, 0, 0, 2 * Math.PI);
+       let enemy = (obj.x + obj.offsetX, obj.y + obj.offsetY, obj.width + obj.offsetWidth / 2, obj.height + obj.offsetHeight / 2, 0, 0, 2 * Math.PI);
+       console.log(character, enemy);
+       if (character < enemy) {
+        console.log(character, enemy);
+       }
     }
 
     //ctx.ellipse(mo.x + mo.offsetX, mo.y + mo.offsetY, mo.width + mo.offsetWidth / 2, mo.height + mo.offsetHeight / 2, 0, 0, 2 * Math.PI);
