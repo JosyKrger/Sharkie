@@ -50,8 +50,6 @@ class World {
             this.flipImage(mo);
         }
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
-        // this.drawBorder(mo);
-        // this.drawBorderExactly(mo);
         this.drawBorderCircle(mo);
         if (mo.otherDirection) {
             this.flipImageBack(mo);
@@ -112,13 +110,20 @@ class World {
 
 
     checkCollision() {
-        setInterval( () => {
-            this.level.pufferfish.forEach( (pufferfish) => {
-                this.character.isColliding(pufferfish);
-                //if (this.character.isColliding(pufferfish)) {
-                //    console.log("Character hit the pufferfish", pufferfish);
-                //}
+        setInterval(() => {
+            this.level.pufferfish.forEach(pufferfish => {
+                if (this.character.isColliding(pufferfish)) {
+                    console.log("Character hit the pufferfish", pufferfish);
+                }
             });
+    
+            this.level.jellyfish_violet.forEach(jellyfish => {
+                if (this.character.isColliding(jellyfish)) {
+                    console.log("Character hit the jellyfish", jellyfish);
+                }
+            });
+    
         }, 200);
     }
+    
 }

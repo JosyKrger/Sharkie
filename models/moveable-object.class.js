@@ -119,14 +119,35 @@ class MoveableObject {
         }, 150);
     }
 
+    
+    // isColliding(obj) {
+    //    let character = (this.x + this.offsetX, this.y + this.offsetY, this.width + this.offsetWidth / 2, this.height + this.offsetHeight / 2, 0, 0, 2 * Math.PI);
+    //    let enemy = (obj.x + obj.offsetX, obj.y + obj.offsetY, obj.width + obj.offsetWidth / 2, obj.height + obj.offsetHeight / 2, 0, 0, 2 * Math.PI);
+    //    return character < enemy
+    // }
 
     isColliding(obj) {
-       let character = (this.x + this.offsetX, this.y + this.offsetY, this.width + this.offsetWidth / 2, this.height + this.offsetHeight / 2, 0, 0, 2 * Math.PI);
-       let enemy = (obj.x + obj.offsetX, obj.y + obj.offsetY, obj.width + obj.offsetWidth / 2, obj.height + obj.offsetHeight / 2, 0, 0, 2 * Math.PI);
-       console.log(character, enemy);
-       if (character < enemy) {
-        console.log(character, enemy);
-       }
+        let oX1 = this.x + this.offsetX; 
+        let oWidth1 = (this.width + this.offsetWidth) / 2; 
+        let oY1 = this.y + this.offsetY;
+        let oHeight1 = (this.height + this.offsetHeight) / 2;
+    
+        let oX2 = obj.x + obj.offsetX; 
+        let oWidth2 = (obj.width + obj.offsetWidth) / 2; 
+        let oY2 = obj.y + obj.offsetY;
+        let oHeight2 = (obj.height + obj.offsetHeight) / 2;
+    
+        // Berechnung des Abstands zwischen den Mittelpunkten der beiden Ellipsen
+        let dx = oX1 - oX2;
+        let dy = oY1 - oY2;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+    
+        // Näherung durch Ellipsenmittelpunktsabstand und Summe der Halbachsen
+        let combinedHalfWidth = oWidth1 + oWidth2;
+        let combinedHalfHeight = oHeight1 + oHeight2;
+    
+        // Überprüfung, ob die Ellipsen kollidieren
+        return (distance < Math.sqrt(combinedHalfWidth * combinedHalfWidth + combinedHalfHeight * combinedHalfHeight));
     }
 
     //ctx.ellipse(mo.x + mo.offsetX, mo.y + mo.offsetY, mo.width + mo.offsetWidth / 2, mo.height + mo.offsetHeight / 2, 0, 0, 2 * Math.PI);
